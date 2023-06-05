@@ -1,6 +1,7 @@
 import time
 import tkinter as tk
 from threading import Thread, Event
+import datetime
 
 
 class App(tk.Tk):
@@ -60,9 +61,9 @@ class App(tk.Tk):
     def reset(self):
         if not self.is_stopped:
             return
+        tk.Label(self.root, text="record: {},  {}".format(self.label["text"], datetime.datetime.now())).pack()
         self.elapsed_total = 0
         self.label["text"] = 0
-
 
     def stop_update_label(self):
         self.event.set()
